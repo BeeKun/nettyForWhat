@@ -1,6 +1,7 @@
 package server;
 
 import handler.DiscardServerHandler;
+import handler.EchoHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -10,6 +11,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+/**
+ * netty server
+ */
 public class DiscardServer {
 
     private int port;
@@ -28,8 +32,8 @@ public class DiscardServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
 
                         @Override
-                        public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new DiscardServerHandler());
+                        public void initChannel(SocketChannel ch) {
+                            ch.pipeline().addLast(new EchoHandler());
                         }
                     }).option(ChannelOption.SO_BACKLOG,128)
                     .childOption(ChannelOption.SO_KEEPALIVE,true);

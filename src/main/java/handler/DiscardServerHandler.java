@@ -5,6 +5,9 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
 
+/**
+ * 简单的打印处理
+ */
 public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
